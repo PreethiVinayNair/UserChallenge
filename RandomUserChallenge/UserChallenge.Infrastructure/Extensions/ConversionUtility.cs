@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Data.SqlTypes;
 
-namespace VMS.Infrastructure.Extensions
+namespace UserChallenge.Infrastructure.Extensions
 {
     public static class ConversionUtility
     {

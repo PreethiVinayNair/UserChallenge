@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UserChallenge.Services
 {
-  class UserModel
+ public class UserModel
   {
     public Guid Id { get; set; }
     

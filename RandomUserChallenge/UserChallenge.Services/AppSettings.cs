@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UserChallenge.Services
 {
-  class AppSettings
+ public class AppSettings
   {
   }
 }

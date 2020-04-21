@@ -21,7 +21,7 @@ namespace UserChallenge.Controllers
     [Route("")]
     public IActionResult GetUsersList()
     {
-      var users = userService.GetUserList();
+      var users = userService.GetUsersList();
 
       return Ok(users);
     }
@@ -29,9 +29,9 @@ namespace UserChallenge.Controllers
 
     [HttpGet]
     [Route("{id}")]
-    public IActionResult Get(Guid id)
+    public IActionResult Get(String name)
     {
-      var user = userService.GetUserByName(id);
+      var user = userService.GetUserByName(name);
 
       if (user == null)
       {

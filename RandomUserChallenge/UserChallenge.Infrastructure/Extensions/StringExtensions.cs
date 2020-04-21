@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace VMS.Infrastructure.Extensions
+namespace UserChallenge.Infrastructure.Extensions
 {
     public static class StringExtensions
     {

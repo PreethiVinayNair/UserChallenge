@@ -4,7 +4,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace VMS.Infrastructure.Extensions
+namespace UserChallenge.Infrastructure.Extensions
 {
     public static class ObjectExtensions
     {

@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using NLog;
 using UserChallenge.Infrastructure;
-using UserChallenge.Middleware;
 
 namespace UserChallenge
 {

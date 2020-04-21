@@ -1,4 +1,4 @@
-﻿namespace VMS.Infrastructure.Common
+﻿namespace UserChallenge.Infrastructure.Common
 {
     public class PagedResult<TItem>
     {
