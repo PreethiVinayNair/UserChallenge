@@ -15,6 +15,6 @@ namespace UserChallenge.Services
     public string Phone{ get; set; }
 
     //Profile Images
-    public byte[] Image { get; set; }
+    public string Image { get; set; }
   }
 }

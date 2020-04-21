@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
-
+import { UserChallenge } from './components/UserChallenge';
+import { UserChallengeManager } from './components/UserChallengeManager';
 import './custom.css'
+import { NotificationContainer } from 'react-notifications';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
-export default class App extends Component {
+import AppStore from './stores/AppStore';
+
+class App extends Component {
   static displayName = App.name;
 
-  render () {
+  static getStores() {
+    return [AppStore];
+  }
+
+  static getPropsFromStores() {
+    return {
+      state: AppStore.getState()
+    };
+  }
+
+
+  render() {
     return (
       <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
+        <NotificationContainer />
+        <Route exact path='/' render={(props) => <Home {...props} {...this.props.state} />} />
+        <Route path='/userchallenge' render={(props) => <UserChallenge {...props} {...this.props.state} />} />
+        <Route path='/userchallengemanager/:userId' render={(props) => <UserChallengeManager {...props} {...this.props.state} />} />
       </Layout>
     );
   }
 }
+
+export default connectToStores(App);

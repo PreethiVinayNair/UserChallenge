@@ -15,7 +15,6 @@ namespace UserChallenge.Domain.Entities
     public string Phone { get; set; }
 
     //Profile Images
-    [MaxLength]
     public byte[] Image { get; set; }
   }
 }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using UserChallenge.Domain;
 using Microsoft.Extensions.Options;
@@ -29,7 +27,7 @@ namespace UserChallenge.Services
         Name = model.Name,
         Email = model.Email,
         Phone = model.Phone,
-        Image = model.Image
+        Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image):null
       };
 
       context.users.Add(newUser);
@@ -45,19 +43,19 @@ namespace UserChallenge.Services
         Id = user.Id,
         Name = user.Name,
         Email = user.Email,
-        Image = user.Image,
+        Image = (user.Image.Length) >0 ?  Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
       }).ToArray();
     }
 
-    public UserModel GetUserByName(String Name)
+    public UserModel GetUserById(Guid Id)
     {
-      return context.users.Where(user => user.Name == Name).Select(user => new UserModel
+      return context.users.Where(user => user.Id == Id).Select(user => new UserModel
       {
         Id = user.Id,
         Name = user.Name,
         Email = user.Email,
-        Image = user.Image,
+        Image = (user.Image.Length) > 0 ? Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
       }).SingleOrDefault();
     }
@@ -74,7 +72,7 @@ namespace UserChallenge.Services
 
       updatedUser.Name = model.Name;
       updatedUser.Email = model.Email;
-      updatedUser.Image = model.Image;
+      updatedUser.Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image) : null;
       updatedUser.Phone = model.Phone;
 
       context.SaveChanges();

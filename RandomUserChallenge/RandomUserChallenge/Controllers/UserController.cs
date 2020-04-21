@@ -2,6 +2,9 @@
 using UserChallenge.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace UserChallenge.Controllers
 {
@@ -29,9 +32,9 @@ namespace UserChallenge.Controllers
 
     [HttpGet]
     [Route("{id}")]
-    public IActionResult Get(String name)
+    public IActionResult Get(Guid id)
     {
-      var user = userService.GetUserByName(name);
+      var user = userService.GetUserById(id);
 
       if (user == null)
       {
@@ -47,11 +50,30 @@ namespace UserChallenge.Controllers
     {
       var user = userService.CreateUser(model);
 
+
       return Ok(new { user.Id });
     }
+
+    //[HttpPost]
+    //[Route("")]
+    //public IActionResult CreateUserImage( [FromForm]ImageDTO img)
+    //{
+    //  UserModel model = new UserModel();
+
+    //  //byte[] imageData = null;
+    //  //using (var binaryReader = new BinaryReader(img.Image.OpenReadStream()))
+    //  //{
+    //  //  imageData = binaryReader.ReadBytes((int)img.Image.Length);
+    //  //}
+    //  //model.Image = imageData;
+
+    //  var user = userService.CreateUser(model);
+
+    //  return Ok(new { user.Id });
+    //}
     [HttpPut]
     [Route("{id}")]
-    public IActionResult Put([FromBody] UserModel model)
+    public  IActionResult Put([FromBody] UserModel model)
     {
       var user = userService.UpdateUser(model);
 

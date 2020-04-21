@@ -13,6 +13,6 @@ namespace UserChallenge.Services
     User UpdateUser(UserModel model);
     void DeleteUser(Guid id);
     UserModel[] GetUsersList();
-    UserModel GetUserByName(String Name);
+    UserModel GetUserById(Guid Id);
   }
 }
