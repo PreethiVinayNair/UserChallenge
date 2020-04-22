@@ -2,7 +2,7 @@ using System;
 using Xunit;
 using UserChallenge.Services;
 using Microsoft.AspNetCore.Mvc;
-using UserChallenge_xUnitTest.Mocks.Services;
+using UserChallenge_xUnitTest.Tests.Mocks.Services;
 using UserChallenge.Domain;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +12,10 @@ using UserChallenge.Controllers;
 using System.Collections.Generic;
 using UserChallenge.Domain.Entities;
 
-namespace UserChallenge_xUnitTest
+namespace UserChallenge_xUnitTest.Tests
 {
   public class UserChallengeServiceTest
   {
-
-    private readonly ApplicationDbContext context;
-    private readonly AppSettings appSettings;
 
     [Fact]
     public void UserChallengeService_SearchFirstName_InValid()
@@ -27,7 +24,7 @@ namespace UserChallenge_xUnitTest
 
       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-      optionsBuilder.UseInMemoryDatabase("UserChallengeApp");
+      optionsBuilder.UseInMemoryDatabase("UserChallengeApp1");
       var _dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
       var options = new Mock<IOptions<AppSettings>>();
@@ -57,7 +54,7 @@ namespace UserChallenge_xUnitTest
 
       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-      optionsBuilder.UseInMemoryDatabase("UserChallengeApp");
+      optionsBuilder.UseInMemoryDatabase("UserChallengeApp2");
       var _dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
       var options = new Mock<IOptions<AppSettings>>();
@@ -88,7 +85,7 @@ namespace UserChallenge_xUnitTest
 
       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-      optionsBuilder.UseInMemoryDatabase("UserChallengeApp");
+      optionsBuilder.UseInMemoryDatabase("UserChallengeApp3");
       var _dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
       var options = new Mock<IOptions<AppSettings>>();
@@ -118,7 +115,7 @@ namespace UserChallenge_xUnitTest
 
       var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-      optionsBuilder.UseInMemoryDatabase("UserChallengeApp");
+      optionsBuilder.UseInMemoryDatabase("UserChallengeApp4");
       var _dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
       var options = new Mock<IOptions<AppSettings>>();

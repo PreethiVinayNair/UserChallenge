@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using UserChallenge_xUnitTest.Mocks.Services;
+using UserChallenge_xUnitTest.Tests.Mocks.Services;
 using Moq;
 using Xunit;
 using Microsoft.AspNetCore.Mvc;
 using UserChallenge.Controllers;
 using UserChallenge.Services;
 
-namespace UserChallenge_xUnitTest.Controllers
+namespace UserChallenge_xUnitTest.Tests.Controllers
 {
   public class UserControllerTests
   {

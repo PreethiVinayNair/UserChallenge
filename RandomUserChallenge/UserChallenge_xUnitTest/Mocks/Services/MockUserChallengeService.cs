@@ -5,7 +5,7 @@ using System.Text;
 using UserChallenge.Domain.Entities;
 using UserChallenge.Services;
 
-namespace UserChallenge_xUnitTest.Mocks.Services
+namespace UserChallenge_xUnitTest.Tests.Mocks.Services
 {
  public  class MockUserChallengeService :Mock<IUserService>
   {

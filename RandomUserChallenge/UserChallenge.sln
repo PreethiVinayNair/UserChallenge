@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserChallenge.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserChallenge.Services", "UserChallenge.Services\UserChallenge.Services.csproj", "{2CC9F5A2-9EFF-40BE-9175-AD71580A236D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChallenge_xUnitTest", "UserChallenge_xUnitTest\UserChallenge_xUnitTest.csproj", "{19A21CDF-5817-457C-A600-C579A3B52171}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserChallenge_xUnitTest.Tests", "UserChallenge_xUnitTest\UserChallenge_xUnitTest.Tests.csproj", "{19A21CDF-5817-457C-A600-C579A3B52171}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
