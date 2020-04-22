@@ -11,7 +11,7 @@ namespace UserChallenge_xUnitTest.Mocks.Services
 
     public MockUserChallengeService MockGetUsersList(UserModel[] results)
     {
-      Setup(x => x.GetUsersList())
+      Setup(x => x.GetUsersList(It.IsAny<int>()))
           .Returns(results);
 
       return this;
@@ -40,7 +40,7 @@ namespace UserChallenge_xUnitTest.Mocks.Services
     }
     public MockUserChallengeService MockGetAll(UserModel[] results)
     {
-      Setup(x => x.GetUsersList())
+      Setup(x => x.GetUsersList(It.IsAny<int>()))
           .Returns(results);
 
       return this;
@@ -48,7 +48,7 @@ namespace UserChallenge_xUnitTest.Mocks.Services
 
     public MockUserChallengeService VerifyGetAll(Times times)
     {
-      Verify(x => x.GetUsersList(), times);
+      Verify(x => x.GetUsersList(It.IsAny<int>()), times);
 
       return this;
     }
@@ -62,7 +62,9 @@ namespace UserChallenge_xUnitTest.Mocks.Services
                 new UserModel()
                 {
                     Id = new Guid("9B4553D2-1684-EA11-9996-28C63FBC6C62"),
-                    Name="Mrs Preethi Nair",
+                    Title="Mrs",
+                      FirstName="Preethi",
+                       LastName=" Nair",
                     DOB= new DateTime(1970, 1, 1),
                     Phone="+64 27 524 1644",
                     Email="rt.nair2004@gmail.com",
@@ -71,7 +73,9 @@ namespace UserChallenge_xUnitTest.Mocks.Services
                 new UserModel()
                 {
                     Id = new Guid("C8CF310F-1784-EA11-9996-28C63FBC6C62"),
-                    Name="Mr Vinay Nair",
+                     Title="Mr",
+                    FirstName="Vinay",
+                    LastName="Nair",
                     DOB= new DateTime(1997, 1, 1),
                     Phone="+64 27 524 1644",
                     Email="rt.nai@gmail.com",

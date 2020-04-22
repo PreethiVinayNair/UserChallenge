@@ -12,7 +12,10 @@ namespace UserChallenge.Services
     User CreateUser(UserModel model);
     User UpdateUser(UserModel model);
     void DeleteUser(Guid id);
-    UserModel[] GetUsersList();
+    UserModel[] GetUsersList(int limit);
     UserModel GetUserById(Guid Id);
+     UserModel SearchUserByFirstName(string FirstName);
+     UserModel SearchUserByLastName(string LastName);
+
   }
 }

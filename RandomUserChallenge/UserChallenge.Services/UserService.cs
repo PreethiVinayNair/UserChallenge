@@ -24,9 +24,11 @@ namespace UserChallenge.Services
     {
       var newUser = new User
       {
-        Name = model.Name,
+        Title = model.Title,
+        FirstName = model.FirstName,
+        LastName = model.LastName,
         Email = model.Email,
-        DOB = model.DOB,
+        DOB = model.DOB.Date,
         Phone = model.Phone,
         Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image):null
       };
@@ -37,17 +39,21 @@ namespace UserChallenge.Services
       return newUser;
     }
 
-    public UserModel[] GetUsersList()
+    public UserModel[] GetUsersList(int limit)
     {
+
+      //Should add Take limit
       return context.users.Select(user => new UserModel
       {
         Id = user.Id,
-        Name = user.Name,
+        Title = user.Title,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
         Email = user.Email,
-        DOB=user.DOB,
+        DOB=user.DOB.Date,
         Image = (user.Image.Length) >0 ?  Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
-      }).ToArray();
+      }).Take(limit).ToArray();
     }
 
     public UserModel GetUserById(Guid Id)
@@ -55,13 +61,47 @@ namespace UserChallenge.Services
       return context.users.Where(user => user.Id == Id).Select(user => new UserModel
       {
         Id = user.Id,
-        Name = user.Name,
+        Title = user.Title,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
         Email = user.Email,
         DOB = user.DOB,
         Image = (user.Image.Length) > 0 ? Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
       }).SingleOrDefault();
     }
+
+    public UserModel SearchUserByFirstName(string FirstName)
+    {
+      return context.users.Where(user=>user.FirstName.Contains(FirstName)).Select(user => new UserModel
+      {
+        Id = user.Id,
+        Title = user.Title,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
+        Email = user.Email,
+        DOB = user.DOB.Date,
+        Image = (user.Image.Length) > 0 ? Encoding.ASCII.GetString(user.Image) : null,
+        Phone = user.Phone
+      }).SingleOrDefault();
+    }
+
+    public UserModel SearchUserByLastName(string LastName)
+    {
+      return context.users.Where(user => user.LastName.Contains(LastName)).Select(user => new UserModel
+      {
+        Id = user.Id,
+        Title = user.Title,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
+        Email = user.Email,
+        DOB = user.DOB.Date,
+        Image = (user.Image.Length) > 0 ? Encoding.ASCII.GetString(user.Image) : null,
+        Phone = user.Phone
+      }).SingleOrDefault();
+    }
+
+
     public User UpdateUser(UserModel model)
     {
       var updatedUser= context.users.SingleOrDefault(s => s.Id == model.Id);
@@ -73,9 +113,11 @@ namespace UserChallenge.Services
 
       //TODO: Input validation. Datatype validation is in place in Front end.
 
-      updatedUser.Name = model.Name;
+      updatedUser.Title = model.Title;
+      updatedUser.FirstName = model.FirstName;
+      updatedUser.LastName = model.LastName;
       updatedUser.Email = model.Email;
-      updatedUser.DOB = model.DOB;
+      updatedUser.DOB = model.DOB.Date;
       updatedUser.Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image) : null;
       updatedUser.Phone = model.Phone;
 

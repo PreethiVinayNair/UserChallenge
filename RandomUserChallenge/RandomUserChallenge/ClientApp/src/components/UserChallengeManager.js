@@ -31,7 +31,9 @@ export class UserChallengeManager extends Component {
       AppActions.updateStates([
         {
           statePath: 'user', data: {
-            name: '',
+            title: '',
+            firstname: '',
+            lastname: '',
             email: '',
             phone: '',
             dob:'',
@@ -91,8 +93,6 @@ export class UserChallengeManager extends Component {
         <pre>{JSON.stringify(user, null, 2)}</pre>
         {user && <Form horizontal>
          
-
-
           <FormGroup controlId="email">
             <Col componentClass={ControlLabel} sm={2}>
               Email
@@ -103,24 +103,45 @@ export class UserChallengeManager extends Component {
             </Col>
           </FormGroup>
 
-
-          <FormGroup controlId="Name">
+          <FormGroup controlId="title">
             <Col componentClass={ControlLabel} sm={2} >
-              Name
+              Title
                         </Col>
             <Col sm={10}>
-              <FormControl type="text" value={user.name}
-                onChange={bindValueTo('user.name')} />
+              <FormControl type="text" value={user.title}
+                onChange={bindValueTo('user.title')} />
             </Col>
           </FormGroup>
 
-          <FormGroup controlId="Dob">
+
+          <FormGroup controlId="firstname">
+            <Col componentClass={ControlLabel} sm={2} >
+              FirstName
+                        </Col>
+            <Col sm={10}>
+              <FormControl type="text" value={user.firstName}
+                onChange={bindValueTo('user.firstName')} />
+            </Col>
+          </FormGroup>
+
+          <FormGroup controlId="lastname">
+            <Col componentClass={ControlLabel} sm={2} >
+              LastName
+                        </Col>
+            <Col sm={10}>
+              <FormControl type="text" value={user.lastName}
+                onChange={bindValueTo('user.lastName')} />
+            </Col>
+          </FormGroup>
+
+
+          <FormGroup controlId="dob">
             <Col componentClass={ControlLabel} sm={2} >
               Date of Birth
                         </Col>
             <Col sm={10}>
-              <FormControl type="date" id="start" name="trip-start"
-       min="1918-01-01" max="2020-03-31"
+              <FormControl type="date" id="start" name="dob-start" timeFormat={false}
+                    min="1918-01-01" max="2020-03-31"
                 onChange={bindValueTo('user.dob')} />
             </Col>
           </FormGroup>
@@ -139,11 +160,14 @@ export class UserChallengeManager extends Component {
           <FormGroup controlId="image">
             <Col componentClass={ControlLabel} sm={2}>
               Image
-                        </Col>
+                        </Col>  
             <Col sm={10}>
-             
-              <FormControl type="file"
-                onChange={this.onImageChange} accept="image/*" />
+              <img src={user.image} alt="No image" width="300px" height="300px" />
+              <FormControl type="file" 
+                onChange={this.onImageChange} accept="image/*"
+                label="Change File"
+              />
+
             </Col>
           </FormGroup>
 

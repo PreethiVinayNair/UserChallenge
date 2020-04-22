@@ -22,14 +22,26 @@ namespace UserChallenge.Controllers
 
     [HttpGet]
     [Route("")]
-    public IActionResult GetUsersList()
+    public IActionResult GetUsersList(int limit,string FirstName=null, string LastName=null)
     {
       try
-      { 
-      var users = userService.GetUsersList();
+      {
+        if (!(String.IsNullOrEmpty(FirstName)))
+        {
+          var user = userService.SearchUserByFirstName(FirstName);
 
-      return Ok(users);
-    }
+          return Ok(user);
+        }
+
+        if (!(String.IsNullOrEmpty(LastName)))
+        {
+          var user = userService.SearchUserByLastName(LastName);
+
+          return Ok(user);
+        }
+        var users = userService.GetUsersList(limit);
+        return Ok(users);
+      }
        catch (Exception)
       {
         return RedirectToAction("Error", "Home");
@@ -55,6 +67,7 @@ namespace UserChallenge.Controllers
       catch(Exception)
       { return RedirectToAction("Error", "Home"); }
     }
+
 
     [HttpPost]
     [Route("")]

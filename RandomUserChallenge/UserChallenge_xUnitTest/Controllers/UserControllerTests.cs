@@ -60,8 +60,9 @@ namespace UserChallenge_xUnitTest.Controllers
 
       var controller = new UserController(mockUserChallengeService.Object);
 
+      int limit = 5;
       //Act
-      var result = controller.GetUsersList();
+      var result = controller.GetUsersList(limit);
       //Assert
       Assert.IsAssignableFrom<OkObjectResult>(result);
       mockUserChallengeService.VerifyGetAll(Times.Once());
@@ -81,9 +82,9 @@ namespace UserChallenge_xUnitTest.Controllers
       var mockUserChallengeService = new MockUserChallengeService().MockGetUsersList(userResults);
 
       var controller = new UserController(mockUserChallengeService.Object);
-
+      int limit = 5;
       //Act
-      var result = controller.GetUsersList();
+      var result = controller.GetUsersList(limit);
 
       //Assert
       Assert.IsAssignableFrom<OkObjectResult>(result);

@@ -13,7 +13,7 @@ export class UserChallenge extends Component {
 
 
   static update() {
-    get('api/userchallenge', (data) => AppActions.updateStates([
+    get('api/userchallenge' + '?limit=5', (data) => AppActions.updateStates([
       { statePath: 'users', data },
       { statePath: 'loading', data: false }
     ]));
@@ -24,31 +24,35 @@ export class UserChallenge extends Component {
       <table className='table'>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
+              <th>Id</th>
+              <th>Title</th>
+              <th>FirstName</th>
+              <th>LastName</th>
               <th>Email</th>
               <th>DOB</th>
-            <th>Phone</th>
-            <th>Image</th>
-            <th></th>
+             <th>Phone</th>
+             <th>Image</th>
+              <th></th>
           </tr>
         </thead>
         <tbody>
           {users.map(u =>
             <tr key={u.id}>
               <td>{u.id}</td>
-              <td>{u.name}</td>
+              <td>{u.title}</td>
+              <td>{u.firstName}</td>
+              <td>{u.lastName}</td>
               <td>{u.email}</td>
-              <td>{u.dob}</td>
+              <td> {u.dob}</td>
               <td>{u.phone}</td>
-              <td><img src={u.image} alt="No image" width="200px" height="200px"/></td>
-              <td><button onClick={() => history.push(`/userchallengemanager/${u.id}`)}>Edit</button></td>
+              <td><img src={u.image} alt="No image" width="100px" height="100px"/></td>
+              <td><button onClick={() => history.push(`/userchallengemanager/${u.id}`)}>View</button></td>
             </tr>
           )}
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="9"></td>
+            <td colSpan="12"></td>
             <td><button onClick={() => history.push(`/userchallengemanager/_`)}>New</button></td>
           </tr>
         </tfoot>
