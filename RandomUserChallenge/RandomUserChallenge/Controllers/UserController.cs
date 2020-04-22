@@ -54,23 +54,6 @@ namespace UserChallenge.Controllers
       return Ok(new { user.Id });
     }
 
-    //[HttpPost]
-    //[Route("")]
-    //public IActionResult CreateUserImage( [FromForm]ImageDTO img)
-    //{
-    //  UserModel model = new UserModel();
-
-    //  //byte[] imageData = null;
-    //  //using (var binaryReader = new BinaryReader(img.Image.OpenReadStream()))
-    //  //{
-    //  //  imageData = binaryReader.ReadBytes((int)img.Image.Length);
-    //  //}
-    //  //model.Image = imageData;
-
-    //  var user = userService.CreateUser(model);
-
-    //  return Ok(new { user.Id });
-    //}
     [HttpPut]
     [Route("{id}")]
     public  IActionResult Put([FromBody] UserModel model)

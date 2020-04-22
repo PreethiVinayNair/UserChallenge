@@ -26,7 +26,8 @@ export class UserChallenge extends Component {
           <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Email</th>
+              <th>Email</th>
+              <th>DOB</th>
             <th>Phone</th>
             <th>Image</th>
             <th></th>
@@ -38,6 +39,7 @@ export class UserChallenge extends Component {
               <td>{u.id}</td>
               <td>{u.name}</td>
               <td>{u.email}</td>
+              <td>{u.dob}</td>
               <td>{u.phone}</td>
               <td><img src={u.image} alt="No image" width="200px" height="200px"/></td>
               <td><button onClick={() => history.push(`/userchallengemanager/${u.id}`)}>Edit</button></td>

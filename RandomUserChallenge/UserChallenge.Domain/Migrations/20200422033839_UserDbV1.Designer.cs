@@ -10,8 +10,8 @@ using UserChallenge.Domain;
 namespace UserChallenge.Domain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200421095650_UserDb")]
-    partial class UserDb
+    [Migration("20200422033839_UserDbV1")]
+    partial class UserDbV1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,9 @@ namespace UserChallenge.Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");

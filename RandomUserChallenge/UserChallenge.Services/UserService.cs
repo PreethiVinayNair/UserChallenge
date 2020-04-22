@@ -26,6 +26,7 @@ namespace UserChallenge.Services
       {
         Name = model.Name,
         Email = model.Email,
+        DOB = model.DOB,
         Phone = model.Phone,
         Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image):null
       };
@@ -43,6 +44,7 @@ namespace UserChallenge.Services
         Id = user.Id,
         Name = user.Name,
         Email = user.Email,
+        DOB=user.DOB,
         Image = (user.Image.Length) >0 ?  Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
       }).ToArray();
@@ -55,6 +57,7 @@ namespace UserChallenge.Services
         Id = user.Id,
         Name = user.Name,
         Email = user.Email,
+        DOB = user.DOB,
         Image = (user.Image.Length) > 0 ? Encoding.ASCII.GetString(user.Image):null,
         Phone = user.Phone
       }).SingleOrDefault();
@@ -72,6 +75,7 @@ namespace UserChallenge.Services
 
       updatedUser.Name = model.Name;
       updatedUser.Email = model.Email;
+      updatedUser.DOB = model.DOB;
       updatedUser.Image = (model.Image.Length) > 0 ? Encoding.ASCII.GetBytes(model.Image) : null;
       updatedUser.Phone = model.Phone;
 

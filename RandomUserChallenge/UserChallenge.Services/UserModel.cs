@@ -14,6 +14,8 @@ namespace UserChallenge.Services
 
     public string Phone{ get; set; }
 
+        public DateTime DOB { get; set; }
+
     //Profile Images
     public string Image { get; set; }
   }

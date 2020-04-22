@@ -26,6 +26,9 @@ namespace UserChallenge.Domain.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
 
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("date");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 

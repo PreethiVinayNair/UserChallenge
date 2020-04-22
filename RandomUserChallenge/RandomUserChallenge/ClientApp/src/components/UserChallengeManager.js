@@ -34,6 +34,7 @@ export class UserChallengeManager extends Component {
             name: '',
             email: '',
             phone: '',
+            dob:'',
             image: ''
           }
         },
@@ -89,15 +90,7 @@ export class UserChallengeManager extends Component {
 
         <pre>{JSON.stringify(user, null, 2)}</pre>
         {user && <Form horizontal>
-          <FormGroup controlId="Name">
-            <Col componentClass={ControlLabel} sm={2} >
-              Name
-                        </Col>
-            <Col sm={10}>
-              <FormControl type="text" value={user.name}
-                onChange={bindValueTo('user.name')} />
-            </Col>
-          </FormGroup>
+         
 
 
           <FormGroup controlId="email">
@@ -109,6 +102,29 @@ export class UserChallengeManager extends Component {
                 onChange={bindValueTo('user.email')} />
             </Col>
           </FormGroup>
+
+
+          <FormGroup controlId="Name">
+            <Col componentClass={ControlLabel} sm={2} >
+              Name
+                        </Col>
+            <Col sm={10}>
+              <FormControl type="text" value={user.name}
+                onChange={bindValueTo('user.name')} />
+            </Col>
+          </FormGroup>
+
+          <FormGroup controlId="Dob">
+            <Col componentClass={ControlLabel} sm={2} >
+              Date of Birth
+                        </Col>
+            <Col sm={10}>
+              <FormControl type="date" id="start" name="trip-start"
+       min="1918-01-01" max="2020-03-31"
+                onChange={bindValueTo('user.dob')} />
+            </Col>
+          </FormGroup>
+
 
           <FormGroup controlId="phone">
             <Col componentClass={ControlLabel} sm={2}>

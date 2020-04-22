@@ -14,6 +14,8 @@ namespace UserChallenge.Domain.Entities
 
     public string Phone { get; set; }
 
+    [Column(TypeName = "date")]
+    public DateTime DOB { get; set; }
     //Profile Images
     public byte[] Image { get; set; }
   }
