@@ -8,7 +8,8 @@ namespace UserChallenge.Domain.Entities
   {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
-    public string Name { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
      //Should include Title, First and Last Name
     public string Email { get; set; }
 

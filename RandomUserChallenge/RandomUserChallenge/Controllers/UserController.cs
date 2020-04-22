@@ -24,48 +24,71 @@ namespace UserChallenge.Controllers
     [Route("")]
     public IActionResult GetUsersList()
     {
+      try
+      { 
       var users = userService.GetUsersList();
 
       return Ok(users);
+    }
+       catch (Exception)
+      {
+        return RedirectToAction("Error", "Home");
+      }
     }
 
 
     [HttpGet]
     [Route("{id}")]
-    public IActionResult Get(Guid id)
+    public IActionResult GetById(Guid id)
     {
-      var user = userService.GetUserById(id);
-
-      if (user == null)
+      try
       {
-        return NotFound();
-      }
+        var user = userService.GetUserById(id);
 
-      return Ok(user);
+        if (user == null)
+        {
+          return NotFound();
+        }
+
+        return Ok(user);
+      }
+      catch(Exception)
+      { return RedirectToAction("Error", "Home"); }
     }
 
     [HttpPost]
     [Route("")]
     public IActionResult CreateUser([FromBody] UserModel model)
     {
-      var user = userService.CreateUser(model);
-
-
-      return Ok(new { user.Id });
+      try
+      {
+        var user = userService.CreateUser(model);
+        return Ok(new { user.Id });
+      }
+      catch (Exception)
+      {
+        return RedirectToAction("Error", "Home"); }
     }
 
     [HttpPut]
     [Route("{id}")]
     public  IActionResult Put([FromBody] UserModel model)
     {
-      var user = userService.UpdateUser(model);
-
-      if (user == null)
+      try
       {
-        return NotFound();
-      }
+        var user = userService.UpdateUser(model);
 
-      return Ok(new { user.Id });
+        if (user == null)
+        {
+          return NotFound();
+        }
+
+        return Ok(new { user.Id });
+      }
+      catch (Exception)
+      {
+        return RedirectToAction("Error", "Home");
+      }
     }
 
 
@@ -73,9 +96,14 @@ namespace UserChallenge.Controllers
     [Route("{id}")]
     public IActionResult DeleteUser(Guid id)
     {
+      try { 
       userService.DeleteUser(id);
-
       return Ok();
+    }
+       catch (Exception)
+      {
+        return RedirectToAction("Error", "Home");
+      }
     }
 
   }
