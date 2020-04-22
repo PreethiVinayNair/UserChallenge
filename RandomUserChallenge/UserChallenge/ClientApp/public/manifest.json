@@ -1,6 +1,6 @@
 {
-  "short_name": "RandomUserChallenge",
-  "name": "RandomUserChallenge",
+  "short_name": "UserChallenge",
+  "name": "UserChallenge",
   "icons": [
     {
       "src": "favicon.ico",
